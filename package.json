@@ -1,0 +1,19 @@
+{
+  "name": "callbreak-multiplayer",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Call Break \u2014 multiplayer table for four (LAN party via QR code)",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "start": "node backend/server.js",
+    "start:public": "TUNNEL=true node backend/server.js",
+    "test": "node backend/validate.js && node backend/roomcore.test.js",
+    "smoke": "node backend/smoke.js",
+    "test:roomcore": "node backend/roomcore.test.js"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

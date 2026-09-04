@@ -1,0 +1,7 @@
+{
+  "name": "callbreak-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Frontend for Call Break multiplayer game",
+  "static": true
+}
