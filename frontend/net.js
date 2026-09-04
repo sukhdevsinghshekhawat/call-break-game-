@@ -9,7 +9,7 @@
   var SUIT_COLOR = { S: 'black', H: 'red', D: 'red', C: 'black' };
   var RANK_LABEL = { 11: 'J', 12: 'Q', 13: 'K', 14: 'A' };
   // displayPos 0=south(bottom, me) 1=west(left) 2=north(top) 3=east(right)
-  var AVATARS = ['🎩', '🦊', '🐼', '🦁', '🐸', '🦄', '🐧', '🦉', '🐯', '🦋', '🐨', '🐺'];
+  var AVATARS = ['🧑‍🚀', '🧑‍💻', '🤖', '👾', '🦸', '🦹', '🧟‍♂️', '🧙', '💂', '🎯', '🕵️', '🦾'];
 
   // ---------- client state ----------
   var you = -1;            // my seatIdx
