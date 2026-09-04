@@ -44,7 +44,7 @@
   .brand .mark{color:var(--gold-bright); font-size:clamp(14px,4vw,20px);}
   .brand h1{font-size:clamp(13px,3.8vw,18px);}
   .brand span.sub{display:none;}
-  .scoreboard{display:flex; gap:4px; font-size:clamp(9px,2.2vw,12px); flex-wrap:wrap;}
+  .scoreboard{display:none !important;}
   .score-chip{background:rgba(0,0,0,.28); border:1px solid var(--panel-line); border-radius:6px; padding:3px 6px; text-align:center; min-width:44px;}
   .score-chip .who{font-size:clamp(7px,1.7vw,10px); opacity:.75;}
   .score-chip .val{font-size:clamp(10px,2.6vw,14px); color:var(--gold-bright); font-variant-numeric:tabular-nums;}
@@ -92,11 +92,11 @@
   .hand .card.disabled:hover{transform:none;}
   .overlay{position:fixed; inset:0; background:rgba(4,14,10,.75); display:flex; align-items:center; justify-content:center; z-index:100; padding:12px;}
   .overlay.hidden{display:none;}
-  .modal{background:var(--panel); border:1px solid var(--panel-line); border-radius:12px; padding:16px 14px; max-width:340px; width:100%; text-align:center; box-shadow:0 20px 60px rgba(0,0,0,.6); max-height:85dvh; overflow-y:auto;}
+  .modal{background:var(--panel); border:1px solid var(--panel-line); border-radius:12px; padding:16px 14px; max-width:min(560px, 90vw); width:100%; text-align:center; box-shadow:0 20px 60px rgba(0,0,0,.6); max-height:85dvh; overflow-y:auto;}
   .modal h2{color:var(--gold-bright); font-size:clamp(16px,4.2vw,20px);}
-  .modal p{font-size:clamp(11px,2.8vw,13px); line-height:1.5; opacity:.9;}
-  .bid-grid{display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:10px 0;}
-  .bid-btn{width:clamp(36px,10vw,44px); height:clamp(36px,10vw,44px); border-radius:50%; border:1px solid var(--gold); background:transparent; color:var(--cream); font-size:clamp(13px,3.2vw,16px); cursor:pointer; font-family:inherit;}
+  .modal p{font-size:clamp(11px,2.8vw,13px); line-height:1.5; opacity:.9; margin:0 auto 12px; max-width:28ch;}
+  .bid-grid{display:grid; grid-template-columns:repeat(7, minmax(34px, 1fr)); gap:10px 8px; justify-items:center; align-items:center; max-width:420px; margin:0 auto;}
+  .bid-btn{width:clamp(38px,9vw,52px); height:clamp(38px,9vw,52px); border-radius:50%; border:1px solid var(--gold); background:transparent; color:var(--cream); font-size:clamp(13px,3.2vw,16px); cursor:pointer; font-family:inherit; justify-self:center;}
   .bid-btn:active{background:var(--gold); color:var(--ink);}
   .primary-btn{background:var(--gold); color:var(--ink); border:none; padding:11px 18px; border-radius:8px; font-size:clamp(13px,3.2vw,15px); font-weight:bold; cursor:pointer; font-family:inherit; letter-spacing:.3px; min-height:44px; touch-action:manipulation;}
   .primary-btn:active{background:var(--gold-bright);}
@@ -452,13 +452,7 @@
   // ---------- RENDER ----------
   function renderScoreboard(){
     const el = document.getElementById('scoreboard');
-    el.innerHTML = '';
-    players.forEach(p=>{
-      const chip = document.createElement('div');
-      chip.className = 'score-chip';
-      chip.innerHTML = `<div class="who">${SEAT_NAME[p.seat]}</div><div class="val">${p.totalScore.toFixed(1)}</div>`;
-      el.appendChild(chip);
-    });
+    if (el) el.innerHTML = '';
     document.getElementById('roundPill').textContent = `Deal ${dealNum} / ${TOTAL_DEALS}`;
   }
 
