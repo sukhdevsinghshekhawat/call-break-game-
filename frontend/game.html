@@ -150,17 +150,116 @@
   .code-box{width:100%; min-height:44px; resize:vertical; font-family:ui-monospace,Menlo,Consolas,monospace; font-size:clamp(10px,2.4vw,12px); background:rgba(0,0,0,.35); color:var(--cream); border:1px solid rgba(212,175,55,.4); border-radius:8px; padding:8px; word-break:break-all; box-sizing:border-box;}
   .toast{position:fixed; left:50%; bottom:16px; transform:translateX(-50%); background:rgba(0,0,0,.88); border:1px solid var(--gold); color:var(--cream); border-radius:10px; padding:10px 14px; font-size:clamp(12px,3vw,14px); z-index:200; max-width:88vw; text-align:center;}
   @media (max-width:480px){
-    .topbar{padding:6px 8px 4px; gap:6px;}
-    .brand h1{font-size:clamp(12px,3.8vw,16px);}
-    .round-pill{padding:3px 8px;}
-    .newgame-btn{padding:4px 8px; min-height:32px;}
-    .scoreboard{flex:1 1 auto; justify-content:center; order:3; width:100%;}
-    .table-wrap{width:min(94vw, 430px);}
-    .modal{max-width:min(86vw, 360px); padding:14px 12px;}
-    .modal p{max-width:24ch;}
-    .bid-grid{grid-template-columns:repeat(7, minmax(28px, 1fr)); gap:8px 6px;}
-    .bid-btn{width:clamp(30px,7.4vw,38px); height:clamp(30px,7.4vw,38px);}
+  .topbar{
+    padding:4px 5px;
+    gap:3px;
+    flex-wrap:nowrap;
   }
+
+  .brand h1{
+    font-size:12px;
+  }
+
+  .brand .mark{
+    font-size:13px;
+  }
+
+  .round-pill{
+    padding:3px 6px;
+    font-size:8px;
+    white-space:nowrap;
+  }
+
+  .newgame-btn{
+    padding:3px 6px;
+    min-height:28px;
+    font-size:8px;
+  }
+
+  /* scoreboard ko next line par mat bhejna */
+  .scoreboard{
+    flex:0 1 auto;
+    justify-content:center;
+    order:initial;
+    width:auto;
+    flex-wrap:nowrap;
+    gap:2px;
+  }
+
+  .score-chip{
+    min-width:32px;
+    padding:2px 3px;
+  }
+
+  .score-chip .who{
+    font-size:6px;
+  }
+
+  .score-chip .val{
+    font-size:9px;
+  }
+
+  .table-wrap{
+    width:94vw;
+    max-width:430px;
+  }
+
+  .card,
+  .trick-slot{
+    width:clamp(30px,8vw,42px);
+    height:clamp(44px,11vw,59px);
+  }
+
+  .card{
+    font-size:clamp(8px,2.2vw,11px);
+  }
+
+  .card .suit-mid{
+    font-size:clamp(11px,3vw,15px);
+  }
+
+  .hand .card{
+    margin-left:clamp(-13px,-3.8vw,-8px);
+  }
+
+  .hand{
+    min-height:50px;
+  }
+
+  .seat-label{
+    font-size:8px;
+    padding:2px 4px;
+  }
+
+  .seat-label .bid,
+  .seat-label .tricks{
+    font-size:7px;
+  }
+
+  .modal{
+    max-width:82vw;
+    padding:12px 10px;
+  }
+
+  .modal h2{
+    font-size:17px;
+  }
+
+  .modal p{
+    font-size:10px;
+  }
+
+  .bid-grid{
+    grid-template-columns:repeat(7,1fr);
+    gap:6px 5px;
+  }
+
+  .bid-btn{
+    width:clamp(29px,8vw,36px);
+    height:clamp(29px,8vw,36px);
+    font-size:12px;
+  }
+}
   @media (min-width:700px){.table-wrap{width:min(60vw,600px); max-width:none;} .card,.trick-slot{width:clamp(44px,6vw,60px); height:clamp(62px,9vw,86px);} .hand .card{margin-left:clamp(-20px,-3vw,-26px);} .menu-panel{padding:20px 24px;}}
   @media (orientation:landscape) and (max-height:500px){.topbar{padding:3px 6px;} .bottom-panel{padding:1px 0;}}
   .hidden{display:none !important;}
