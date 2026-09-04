@@ -335,7 +335,7 @@
       g.leaderIdx = findTwoOfClubsHolder(g);
       g.biddingOrder = [];
       for (let i = 0; i < 4; i++) {
-        g.biddingOrder.push((g.leaderIdx + 4 - i) % 4);
+        g.biddingOrder.push((g.leaderIdx + i) % 4);
       }
       g.biddingPos = 0;
       g.currentTrick = [];
@@ -370,7 +370,7 @@
       hand.splice(idx, 1);
       g.currentTrick.push({ seatIdx: seat, card: { suit: card.suit, rank: card.rank } });
       if (g.currentTrick.length < 4) {
-        g.awaitingSeat = (seat + 3) % 4;
+        g.awaitingSeat = (seat + 1) % 4;
         g.trickLocked = false;
       } else {
         g.trickLocked = true;
