@@ -532,12 +532,24 @@
   body.mode-table .screen#screenTable{ display:block; }
    </style>
 </head>
+<!--
+  Online mode backend URL.
+  ========================
+  * If frontend + backend are on the SAME host (e.g. just `npm start`), leave
+    this commented — the client auto-derives the WebSocket URL from the page.
+  * If the frontend is hosted separately (Netlify) from the backend (Render),
+    uncomment the line below and set it to your Render WebSocket URL.
+    Current backend: https://call-break-game.onrender.com/
+-->
+<script>window.__WS_URL__ = 'wss://call-break-game.onrender.com/ws';</script>
+
+</body>
 <body>
 <!-- When deploying frontend (Netlify) separately from backend (Render):
      Uncomment/edit the line below to point to your backend WebSocket URL. -->
-<!--
+
 <script>window.__WS_URL__ = 'wss://your-backend.onrender.com/ws';</script>
--->
+
 
 
 <!-- ============ HOME ============ -->
