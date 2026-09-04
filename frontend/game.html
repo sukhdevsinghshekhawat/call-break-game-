@@ -875,7 +875,20 @@
   // without a network after the first visit (service worker in ./sw.js).
   if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
     window.addEventListener('load', function () {
-      navigator.serviceWorker.register('./sw.js').catch(function () {});
+      navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' }).then(function (registration) {
+        registration.update();
+
+        if (registration.waiting) {
+          registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+        }
+
+        navigator.serviceWorker.addEventListener('controllerchange', function () {
+          if (!window.__swReloadQueued) {
+            window.__swReloadQueued = true;
+            window.location.reload();
+          }
+        });
+      }).catch(function () {});
     });
   }
 </script>

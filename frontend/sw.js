@@ -1,13 +1,14 @@
 // Call Break — offline app-shell cache.
 // Caches the static assets so the game can be loaded without a network
 // after the very first visit (needed for the offline 4-Phone mode).
-const CACHE = 'callbreak-shell-v1';
+const CACHE = 'callbreak-shell-v2';
 const ASSETS = [
   '/',
   '/game.html',
   '/net.js',
   '/roomcore.js',
   '/p2p.js',
+  '/sw.js',
 ];
 
 self.addEventListener('install', function (event) {
@@ -18,6 +19,12 @@ self.addEventListener('install', function (event) {
       return self.skipWaiting();
     })
   );
+});
+
+self.addEventListener('message', function (event) {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
 });
 
 self.addEventListener('activate', function (event) {
