@@ -526,8 +526,8 @@
 
   function idx(seat){ return SEATS.indexOf(seat); }
   function nextIdx(i){
-    // Counter-clockwise walk around the table.
-    return (i + 1) % 4;
+    // Anti-clockwise walk around the table: south -> east -> north -> west.
+    return (i + 3) % 4;
   }
 
   function findTwoOfClubsHolder(){
@@ -620,7 +620,7 @@
   function startBidding(){
     players.forEach(p=>{ p.bid=null; p.tricksWon=0; });
     biddingOrder = [];
-    for(let i=0;i<4;i++) biddingOrder.push((leaderIdx+i)%4);
+    for(let i=0;i<4;i++) biddingOrder.push((leaderIdx + 4 - i) % 4);
     biddingPos = 0;
     setStatus('Bidding...');
     renderAll();
