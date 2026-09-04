@@ -63,6 +63,10 @@ function sleep(ms) { return new Promise((r) => setTimeout(r, ms)); }
   mgr.parse(host, JSON.stringify({ t: 'start' }));
   assert.strictEqual(host.state.phase, 'bidding', 'bidding started');
 
+  const leader = host.state.leaderIdx;
+  const expectedOrder = [leader, (leader + 1) % 4, (leader + 2) % 4, (leader + 3) % 4];
+  assert.deepStrictEqual(host.state.biddingOrder, expectedOrder, 'bidding order should move anti-clockwise');
+
   const conns = [host].concat(guests);
   let deals = 0;
   let guard = 0;

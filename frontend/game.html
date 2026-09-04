@@ -24,13 +24,13 @@
   }
   *,*::before,*::after{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
   html,body{height:100%; margin:0; padding:0;}
-  html{overflow:hidden;}
+  html{overflow-x:hidden;}
   body{
     font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
     background: radial-gradient(ellipse at 50% 30%, #1a4a37 0%, var(--felt-1) 55%, #082017 100%);
     color:var(--cream);
-    width:100%; min-height:100vh; min-height:100dvh;
-    overflow:hidden; display:flex; flex-direction:column;
+    width:100%; min-height:100dvh;
+    overflow-x:hidden; overflow-y:auto; display:flex; flex-direction:column;
     align-items:center; justify-content:flex-start;
     touch-action:manipulation; -webkit-user-select:none; user-select:none;
     position:relative;
@@ -38,7 +38,7 @@
   h1,h2,h3{font-weight:700; letter-spacing:.3px; margin:0;}
   .screen{display:none; width:100%; flex:1; flex-direction:column; align-items:center;}
   .screen.active{display:flex;}
-  body.mode-home, body.mode-join, body.mode-lobby{overflow-y:auto; position:relative; height:auto; min-height:100vh; min-height:100dvh;}
+  body.mode-home, body.mode-join, body.mode-lobby{overflow-y:auto; position:relative; height:auto; min-height:100dvh;}
   .topbar{width:100%; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:4px; padding:6px 8px; background:linear-gradient(180deg,rgba(0,0,0,.35),transparent); z-index:20; flex-shrink:0;}
   .brand{display:flex; align-items:baseline; gap:5px;}
   .brand .mark{color:var(--gold-bright); font-size:clamp(14px,4vw,20px);}
@@ -151,7 +151,7 @@
   .toast{position:fixed; left:50%; bottom:16px; transform:translateX(-50%); background:rgba(0,0,0,.88); border:1px solid var(--gold); color:var(--cream); border-radius:10px; padding:10px 14px; font-size:clamp(12px,3vw,14px); z-index:200; max-width:88vw; text-align:center;}
   @media (max-width:540px){
     html,body{overflow-x:hidden;}
-    #screenTable{justify-content:space-between; min-height:100dvh; padding-bottom:4px;}
+    #screenTable{justify-content:space-between; min-height:100dvh; padding-bottom:max(4px, env(safe-area-inset-bottom));}
     .topbar{padding:4px 5px 3px; gap:3px; flex-wrap:nowrap;}
     .brand{gap:3px;}
     .brand .mark{font-size:11px;}
@@ -620,7 +620,7 @@
   function startBidding(){
     players.forEach(p=>{ p.bid=null; p.tricksWon=0; });
     biddingOrder = [];
-    for(let i=0;i<4;i++) biddingOrder.push((leaderIdx+i)%4);
+    for(let i=0;i<4;i++) biddingOrder.push((leaderIdx + (i * 3)) % 4);
     biddingPos = 0;
     setStatus('Bidding...');
     renderAll();

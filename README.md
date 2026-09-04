@@ -127,7 +127,7 @@ For players on **different networks**, deploy the backend and frontend separatel
 ## Rules (as Implemented)
 
 - 52-card deck, 13 cards each; **spades are always trump**.
-- Bidding starts with the holder of the 2 of clubs, proceeding clockwise.
+- Bidding starts with the holder of the 2 of clubs, proceeding anti-clockwise around the table (South → East → North → West).
 - You must follow suit if you can; highest spade (or highest card of the led
   suit) takes the trick.
 - Made your call: `+bid + (won − bid) × 0.1`. Missed it: `−bid`.

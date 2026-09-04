@@ -335,7 +335,7 @@
       g.leaderIdx = findTwoOfClubsHolder(g);
       g.biddingOrder = [];
       for (let i = 0; i < 4; i++) {
-        g.biddingOrder.push((g.leaderIdx + i) % 4);
+        g.biddingOrder.push((g.leaderIdx - i + 4) % 4);
       }
       g.biddingPos = 0;
       g.currentTrick = [];
